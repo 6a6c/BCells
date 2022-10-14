@@ -1,0 +1,68 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{geometry}
+\usepackage{amssymb}
+
+\lstdefinestyle{code}{
+	basicstyle=\ttfamily\small
+}
+
+\lstset{style=code}
+
+\graphicspath{ {./figures/} }
+
+\geometry{
+	letterpaper,
+	top=2.54cm,
+	bottom=2.54cm,
+	left=2.54cm,
+	right=2.54cm
+}
+
+\begin{document}
+\title{Germinal Center B Cells Lab Journal}
+\author{Jake Looney\\ Undergrad at the University of Tennessee Knoxville}
+\date{October, 2022}
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\section{October 3rd, 2022}
+* Began by creating jupyternotebook for replicating model (boy howdy is installing jupyter annoying)
+\\
+* Created a basic model using the equations described and solved it with the Euler method. Lots of stackoverflowing and wikipediaing.
+\\
+* Using some of the fits sent to me could not replicate results (often with solutions that are wildly different)
+\\
+* Need more time working on this a figuring out fits. Spent about 4 hours today
+
+\section{October 4th, 2022}
+* Worked more with toying around w/ fits and trying to figure out what works best. 
+\\
+* Some of the fits given really make no sense at all. E.g, mu of 10 million makes the model diverge to infinity. fM > 1 makes no sense
+\\
+* Added scatter plot to help visualize data
+\\
+* Need to make some way of fitting variables (figure out how gradient descent works again). Spent about 1.5 hours
+
+\section{October 5th, 2022}
+* Implemented a gradient descent. Or rather, tried to. It didn't work. It would never descend the gradient. 
+I have no idean what I did wrong but I spent about 5 hours all to get nothing out of it.
+
+\section{October 7th, 2022}
+* Emailed Dr. Ganusov and got a response that helped me fit the model better. (i.e. how to fit mu and f_M)
+\\
+* To fit Plasmablast population, he adds B0 to B(t). This seems weird to me as it implies that there exists a population of plasma blasts that can never die.
+\\
+* Got gradient descent to work. I had an extra "r" in an array. Gradient descent with respect to SSR doesn't seem to help that much, will have to try it with NLL.
+
+
+
+\end{document}

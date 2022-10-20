@@ -35,33 +35,68 @@
 \pagenumbering{arabic}
 
 \section{October 3rd, 2022}
-* Began by creating jupyternotebook for replicating model (boy howdy is installing jupyter annoying)
+  Began by creating jupyternotebook for replicating model (boy howdy is installing jupyter annoying)
 \\
-* Created a basic model using the equations described and solved it with the Euler method. Lots of stackoverflowing and wikipediaing.
+  Created a basic model using the equations described and solved it with the Euler method. Lots of stackoverflowing and wikipediaing.
 \\
-* Using some of the fits sent to me could not replicate results (often with solutions that are wildly different)
+  Using some of the fits sent to me could not replicate results (often with solutions that are wildly different)
 \\
-* Need more time working on this a figuring out fits. Spent about 4 hours today
+  Need more time working on this a figuring out fits. Spent about 4 hours today
 
 \section{October 4th, 2022}
-* Worked more with toying around w/ fits and trying to figure out what works best. 
+  Worked more with toying around w/ fits and trying to figure out what works best. 
 \\
-* Some of the fits given really make no sense at all. E.g, mu of 10 million makes the model diverge to infinity. fM > 1 makes no sense
+  Some of the fits given really make no sense at all. E.g, $\mu$ of 10 million makes the model diverge to infinity. $f_M > 1$ makes no sense
 \\
-* Added scatter plot to help visualize data
+  Added scatter plot to help visualize data
 \\
-* Need to make some way of fitting variables (figure out how gradient descent works again). Spent about 1.5 hours
+  Need to make some way of fitting variables (figure out how gradient descent works again). Spent about 1.5 hours
 
 \section{October 5th, 2022}
-* Implemented a gradient descent. Or rather, tried to. It didn't work. It would never descend the gradient. 
+  Implemented a gradient descent. Or rather, tried to. It didn't work. It would never descend the gradient. 
 I have no idean what I did wrong but I spent about 5 hours all to get nothing out of it.
 
 \section{October 7th, 2022}
-* Emailed Dr. Ganusov and got a response that helped me fit the model better. (i.e. how to fit mu and f_M)
+  Emailed Dr. Ganusov and got a response that helped me fit the model better. (i.e. how to fit $\mu$ and $f_M$)
 \\
-* To fit Plasmablast population, he adds B0 to B(t). This seems weird to me as it implies that there exists a population of plasma blasts that can never die.
+  To fit Plasmablast population, he adds $B_0$ to $B(t)$. This seems weird to me as it implies that there exists a population of plasma blasts that can never die.
 \\
-* Got gradient descent to work. I had an extra "r" in an array. Gradient descent with respect to SSR doesn't seem to help that much, will have to try it with NLL.
+  Got gradient descent to work. I had an extra "r" in an array. Gradient descent with respect to SSR doesn't seem to help that much, will have to try it with NLL.
+
+\section{October 11th, 2022}
+  Tried implementing NLL but came up short as I don't have affinity data to fit to. Asked Dr. Ganusov for it and sent him other questions I had. 
+
+\section{October 12th, 2022}
+  Got affinity data to fit NLL to. NLL is confusing and had some hiccups but eventually got it to match. 
+
+\section{October 13th, 2022}
+  Met with Dr. Ganusov to discuss details and questions. Helped clear up NLL confusions. Discussed possible next steps with either changing antigen curves or adding a carrying capacity.
+
+\section{October 17th, 2022}
+  Created a model using carrying capacity. Essentially, instead of using a fixed death rate, death of cells now modeled by quadratic term.
+\\
+  Similar to a logistic curve ala ecology population dynamics, but keeps the terms we were using to calculate new cells/cell differentiation. All that chnaged is how cells die.
+\\
+  Came up with what I thought carrying caps would be for each types of cell and sent it on its way down the gradient. Started with NLL of +1300, currently at about +400.
+\\
+  Change in carrying cap constants is negligable. Maybe this will change when other constants get closer to where they should go, but it will be concerning if they don't change at all.
+\\
+  Letting it run over night to see what happens. I am really starting to think I need to change how I actually change variables with respect to the gradient tho cuz this seems not right.
+
+\section{October 18th, 2022}
+* After letting gradient descent on all variables run all night, it only got to down to about 80. And, as expected, K values did not vary at all.
+\\
+  So, I tried to fix the rest of the values and only do gradient descent on the K's. This worked well, getting down to about 150 before stopping.
+I then did gradient descent on all variables and got NLL down to 23. The graph's also look more promising, but still off.
+\\
+  So, then I tried varying $r_G$ in the logistic part of the eqation. I started by taking ${r_G}_k = r_G \sqrt{nA - k + 1}$ where nA is the number of affinities and k is the affinity of the cells.
+I tried this way as it seems to make more sense, as then cells with higher affinities will be better off at not dying.
+\\
+  Again fixing the other variables, grad desc on K values got to NLL of 168. After then varying everything. NLL got to 29
+\\
+I then tried again but the other way, where ${r_G}_k = r_G \sqrt{k}$, the same way as for the proliferation of cells.
+\\
+Same process, fixing and only focusing on K's got NLL of 129. Varying everything, NLL of 12.
 
 
 

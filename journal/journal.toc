@@ -1,2 +1,9 @@
 \contentsline {section}{\numberline {1}October 3rd, 2022}{1}{section.1}%
 \contentsline {section}{\numberline {2}October 4th, 2022}{1}{section.2}%
+\contentsline {section}{\numberline {3}October 5th, 2022}{1}{section.3}%
+\contentsline {section}{\numberline {4}October 7th, 2022}{1}{section.4}%
+\contentsline {section}{\numberline {5}October 11th, 2022}{1}{section.5}%
+\contentsline {section}{\numberline {6}October 12th, 2022}{2}{section.6}%
+\contentsline {section}{\numberline {7}October 13th, 2022}{2}{section.7}%
+\contentsline {section}{\numberline {8}October 17th, 2022}{2}{section.8}%
+\contentsline {section}{\numberline {9}October 18th, 2022}{2}{section.9}%

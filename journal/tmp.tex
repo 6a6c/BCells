@@ -1,0 +1,44 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{geometry}
+\usepackage{amssymb}
+
+\lstdefinestyle{code}{
+	basicstyle=\ttfamily\small
+}
+
+\lstset{style=code}
+
+\graphicspath{ {./figures/} }
+
+\geometry{
+	letterpaper,
+	top=2.54cm,
+	bottom=2.54cm,
+	left=2.54cm,
+	right=2.54cm
+}
+
+\begin{document}
+
+\title{Dynmaics of B Cells in Germinal Centers}
+
+\begin{equation}\label{eq1}
+\frac{dA(t)}{dt}  = -(\lambda + m)A(t)
+\end{equation}
+
+\begin{equation}\label{eq2}
+\frac{dA_g(t)}{dt}  = mA(t) - \lambda A_g(t)
+\end{equation}
+
+\begin{equation}\label{eq3}
+    \frac{dB(t)}{dt}  = \frac{rA(t)B(t)}{h_b+A(t)} -(\delta_b+d_{BG})B(t)
+\end{equation}
+
+
+
+\end{document}
